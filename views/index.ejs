@@ -1,9 +1,20 @@
 <%- include('./partials/head') %>
 
-<ul>
-  <% data.forEach(person => { %>
-  <li><a href="./person/<%= person.id %>"><%=person.name %></a></li>
-  <% }) %>
-</ul>
 
-<%- include('./partials/foot') %>
+
+  <ul>
+    <% persons.forEach(person=> { %>
+      <li>
+        <h1>
+          <%=person.name %>
+        </h1>
+        <img class="main__card--background" src="<%= (person.avatar == '') ? 'assets/placeholder.jpg' : person.avatar %>" onerror="this.src='assets/replace.jpeg'">
+
+
+      </li>
+      <% }) %>
+  </ul>
+
+
+
+  <%- include('./partials/foot') %>

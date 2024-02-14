@@ -19,12 +19,16 @@ app.use(express.static('public'))
 
 // Maak een GET route voor de index
 app.get('/', function (request, response) {
-  // Haal alle personen uit de FDND API op
-  fetchJson(apiUrl + '/Person').then((data) => {
-    // Render index.ejs uit de views map en geef uit FDND API opgehaalde data mee
-    response.render('index', data)
+  // Haal alle personen uit de WHOIS API op
+  fetchJson(apiUrl + '/person?filter[squad_id][_eq]=3').then((apiData) => {
+    // apiData bevat gegevens van alle personen uit alle squads
+    // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
+
+    // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
+    response.render('index', {persons: apiData.data})
   })
 })
+
 
 // Maak een POST route voor de index
 app.post('/', function (request, response) {
