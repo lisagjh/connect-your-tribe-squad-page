@@ -41,7 +41,12 @@ html {
   max-width: 40rem;
   margin: auto;
   margin-top: 5rem;
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
   border: 0.5vmin solid var(--dark);
   box-shadow: 0.4rem 0.4rem var(--dark);
+}
+
+.person img {
+  width: 250px;
+  height: 250px;
 }

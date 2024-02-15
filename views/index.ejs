@@ -1,43 +1,49 @@
 <%- include('./partials/head') %>
+  <div class="wrapper">
 
-  <header>
-    <p>leerjaar 1 - 2023/24</p>
-    <h1>Squad D</h1>
-  </header>
+    <header>
+      <p>leerjaar 1 - 2023/24</p>
+      <h1>FDND</h1>
+      <p>Frontend Design & Development</p>
+    </header>
 
-  <main>
+    <main>
 
-    <div class="container">
-      <ul>
-        <!-- loop waardoor dit li element voor elk persoon word herhaald -->
-        <% persons.forEach(person=> { %>
-          <li>
-            <a href="./person/<%= person.id %>">
-              <h2>
-                <%=person.name %>
-              </h2>
-            </a>
-            <div class="surname">
-              <%=person.prefix %>
-                <%=person.surname %>
-            </div>
-            <p class="nickname">
-              <%=person.nickname %>
-            </p>
-            <img src="<%= (person.avatar == '') ? 'assets/placeholder.jpg' : person.avatar %>"
-              onerror="this.src='assets/replace.jpeg'">
-          </li>
-          <% }) %>
-      </ul>
+      <div class="container">
+        <ul>
+          <!-- loop waardoor dit li element voor elk persoon word herhaald -->
+          <% persons.forEach(person=> { %>
+            <li>
+              <a href="./person/<%= person.id %>">
+                <h2>
+                  <%=person.name %>
+                </h2>
+              </a>
+              <div class="surname">
+                <%=person.prefix %>
+                  <%=person.surname %>
+              </div>
+              <p class="nickname">
+                <%=person.nickname %>
+              </p>
+              <img src="<%= (person.avatar == '') ? 'assets/placeholder.jpg' : person.avatar %>"
+                onerror="this.src='assets/replace.jpeg'">
+            </li>
+            <% }) %>
+        </ul>
 
-    </div>
+      </div>
 
-    <div class="buttons">
+      <div class="buttons">
 
-    </div>
+      </div>
 
-    <div class="back-to-top">
-      <button></button>
-    </div>
+      <div class="back-to-top">
+        <button class="scroll-btn" onclick="topFunction()">back to top </button>
 
-    <%- include('./partials/foot') %>
+        <!-- <img src="/assets/arroww.png"> -->
+
+      </div>
+  </div>
+
+  <%- include('./partials/foot') %>

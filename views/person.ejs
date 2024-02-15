@@ -5,6 +5,8 @@
     <h1><%=person.name %></h1>
   </header>
 
+  <img src="<%= (person.avatar == '') ? 'assets/placeholder.jpg' : person.avatar %>"
+  onerror="this.src='assets/replace.jpeg'">
 
   <footer></footer>
 </article>
