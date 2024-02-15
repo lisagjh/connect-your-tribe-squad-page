@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap");
+/* "Silkscreen", arial, helvetica, sans-serif */
+
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+/* "Chakra Petch", arial, helvetica, sans-serif */
+
+@import url("https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap");
+/*   font-family: "Tangerine", cursive; */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Tangerine:wght@400;700&display=swap");
+/* "Inter", sans-serif */
+
+html {
+  --font-one: "Inter", arial, helvetica, sans-serif;
+  --font-two: "Tangerine", cursive;
+  --font-three: "Silkscreen", arial, helvetica, sans-serif;
+  --font-four: "Chakra Petch", arial, helvetica, sans-serif;
+
+  --black: #121212;
+  --white: #f3f3f3;
+  --offwhite: #efefef;
+  --grey: #666;
+  --dark: #05060f;
+  --blue: #65a5c7;
+  --red: #ee7214;
+  --orange: #f7b787;
+  --green: #79c39e;
+  --yellow: #faca78;
+
+  --space-big: 1.5rem;
+  --space-reg: 1rem;
+  --space-third: 0.7rem;
+  --space-half: 0.5rem;
+  --space-small: 0.2rem;
+}
+
+.person {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  max-width: 40rem;
+  margin: auto;
+  margin-top: 5rem;
+  border-radius: 0.5rem;
+  border: 0.5vmin solid var(--dark);
+  box-shadow: 0.4rem 0.4rem var(--dark);
+}
