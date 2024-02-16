@@ -48,25 +48,30 @@ app.get("/person/:id", function (request, response) {
   });
 });
 
-
-
-
 // Maak een GET route voor de find/filter dingen
-app.get('/filter/:q', function (request, response) {
-
+app.get("/filter/:q", function (request, response) {
   /*
   filter voorbeeld
   https://fdnd.directus.app/items/person/?filter={"name":"Koop"}
   https://fdnd.directus.app/items/person/?filter={"name":{"_contains":"oo"}}
   https://fdnd.directus.app/items/person/?filter={"name":{"_eq":"oo"}}
   https://fdnd.directus.app/items/person/?filter={"bio":{"_icontains":"frontend"}}
+  ?filter[squad_id][_eq]=3 = squad D filter
+  ?filter[squad_id][_eq]=4 = squad E filter
+  ?filter[squad_id][_eq]=5 = squad F filter
+  ?sort=name = az sorteer
   */
 
-  fetchJson('https://fdnd.directus.app/items/person/?filter=' + request.params.q).then((apiData) => {
-      // Render person.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
-      response.render('filter', {persons: apiData.data, squads: squadData.data})
-  })
-})
+  fetchJson(
+    "https://fdnd.directus.app/items/person/?filter=" + request.params.q
+  ).then((apiData) => {
+    // Render person.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
+    response.render("filter", {
+      persons: apiData.data,
+      squads: squadData.data,
+    });
+  });
+});
 
 // Maak een POST route voor de index
 app.post("/", function (request, response) {

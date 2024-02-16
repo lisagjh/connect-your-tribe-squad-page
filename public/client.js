@@ -1,22 +1,17 @@
 const scrollBtn = document.querySelector(".scroll-btn");
 const root = document.documentElement;
 
-// When the user scrolls down 20px from the top of the document, show the button
+// wanneer je 100px naar beneden scrollt, komt de knop te voorschijn
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
     scrollBtn.style.display = "block";
   } else {
     scrollBtn.style.display = "none";
   }}
 
-// // When the user clicks on the button, scroll to the top of the document
-// function topFunction() {
-//   document.body.scrollTop = 0; // For Safari
-//   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-// }
-
+  // geeft de knop de functionaliteit
 function topFunction() {
     // Scroll to top logic
     root.scrollTo({
@@ -26,14 +21,27 @@ function topFunction() {
   }
   scrollToTopBtn.addEventListener("click", scrollToTop);
 
-// var scrollBtn = document.querySelector(".scrollBtn")
-// var rootElement = document.documentElement;
 
-// function scrollBtn() {
-//   // Scroll to top logic
-//   rootElement.scrollTo({
-//     top: 0,
-//     behavior: "smooth"
-//   });
+
+  // toms background color generator
+
+//   // Bepaal alle hexadecimale kleurcodes die een kleur kan hebben
+// const colors = ["9DE5A4", "FFBABA", "3D5E85", "EE9DF0", "ECEE89", "A2FAE5", "FB8888", "B7FF95", "E385CF", "B4CCF0"];
+
+// // Haal een willekeurige kleur op uit de array
+// function generateNewColor() {
+//     const randomIndex = Math.floor(Math.random() * colors.length);
+//     return '#' + colors[randomIndex];
 // }
-// scrollBtn.addEventListener("click", scrollToTop);
+
+// function cardcolor() {
+//     // Haal de elementen met de class "card" op
+//     const cardElements = document.querySelectorAll(".card");
+//     // Voor elke kaart, genereer een andere achtergrondkleur
+//     cardElements.forEach(function(card) {
+//         card.style.background = generateNewColor();
+//     });
+// }
+
+// // haal de cardcolor op
+// cardcolor();

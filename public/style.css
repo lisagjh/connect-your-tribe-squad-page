@@ -182,13 +182,6 @@ li:nth-of-type(5n + 3) {
   background-color: var(--orange);
 }
 
-li:hover {
-  translate: 0% -7%;
-  scale: 1.01;
-  margin: 2rem var(--space-third);
-  box-shadow: 0.75rem 0.75rem var(--dark);
-}
-
 h2 {
   grid-area: name;
   font-size: 1.2rem;
@@ -209,7 +202,7 @@ img {
   grid-area: avatar;
   height: 80px;
   width: 80px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 /* back to top */
@@ -259,14 +252,7 @@ img {
   }
 }
 
-/* @media (prefers-color-scheme: dark) {
-  body {
-    background-color: var(--dark-grey);
-  }
-  header {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, var(--dark-grey) 35%);
-  }} */
-
+/* @supports  */
 @media (prefers-reduced-motion: no-preference) {
   li {
     scale: 0.75;
@@ -280,4 +266,5 @@ img {
     to {
       scale: 1;
       opacity: 1;
-    }}
+    }
+  }}
