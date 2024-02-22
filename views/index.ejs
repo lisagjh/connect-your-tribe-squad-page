@@ -11,9 +11,9 @@
 
       <div class="container">
         <button class="filter-btn"><i class='bx bx-filter'></i> FILTERS</button>
-      <div class="filter-view">
-        <h4>FILTERS</h4>
-      </div>
+        <div class="filter-view">
+          <h4>FILTERS</h4>
+        </div>
 
         <!-- loop waardoor dit li element voor elk persoon word herhaald -->
         <% persons.forEach(person=> { %>
@@ -22,8 +22,8 @@
               <h2>
                 <%=person.name %>
               </h2>
-              </a>
-          
+            </a>
+
             <p class="surname">
               <%=person.prefix %>
                 <%=person.surname %>
@@ -43,4 +43,5 @@
       </div>
   </div>
 
+  </main>
   <%- include('./partials/foot') %>
