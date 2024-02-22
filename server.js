@@ -26,7 +26,7 @@ app.use(express.static("public"));
 // Maak een GET route voor de index
 app.get("/", function (request, response) {
   // Haal alle personen uit de WHOIS API op
-  fetchJson(apiUrl + "/person/?sort=name").then((apiData) => {
+  fetchJson(apiUrl + "/person").then((apiData) => {
     // ?filter[squad_id][_eq]=3 = squad D filter
     // ?filter[squad_id][_eq]=4 = squad E filter
     // ?filter[squad_id][_eq]=5 = squad F filter

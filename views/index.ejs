@@ -4,38 +4,41 @@
     <header>
       <p>leerjaar 1 - 2023/24</p>
       <h1>FDND</h1>
-      <p>Frontend Design & Development</p>
+      <h1>Frontend Design & Development</h1>
     </header>
 
     <main>
 
       <div class="container">
-        <ul>
-          <!-- loop waardoor dit li element voor elk persoon word herhaald -->
-          <% persons.forEach(person=> { %>
-            <li>
-              <a href="./person/<%= person.id %>">
-                <h2>
-                  <%=person.name %>
-                </h2>
-              </a>
-              <div class="surname">
-                <%=person.prefix %>
-                  <%=person.surname %>
-              </div>
-              <p class="nickname">
-                <%=person.nickname %>
-              </p>
-              <img src="<%= (person.avatar == '') ? 'assets/placeholder.jpg' : person.avatar %>"
-                onerror="this.src='assets/replace.jpeg'">
-            </li>
-            <% }) %>
-        </ul>
+        <button class="filter-btn"><i class='bx bx-filter'></i> FILTERS</button>
+      <div class="filter-view">
+        <h4>FILTERS</h4>
+      </div>
+
+        <!-- loop waardoor dit li element voor elk persoon word herhaald -->
+        <% persons.forEach(person=> { %>
+          <article class="profilecard">
+            <a href="./person/<%= person.id %>">
+              <h2>
+                <%=person.name %>
+              </h2>
+            </a>
+            <p class="surname">
+              <%=person.prefix %>
+                <%=person.surname %>
+            </p>
+            <img src="<%= (person.avatar == '') ? 'assets/placeholder.jpg' : person.avatar %>"
+              onerror="this.src='assets/replace.jpeg'">
+            <p class="nickname">
+              <%=person.nickname %>
+            </p>
+          </article>
+          <% }) %>
 
       </div>
 
       <div class="back-to-top">
-        <button class="scroll-btn" onclick="topFunction()">back to top </button>
+        <button class="scroll-btn" onclick="topFunction()">BACK TO TOP</button>
       </div>
   </div>
 

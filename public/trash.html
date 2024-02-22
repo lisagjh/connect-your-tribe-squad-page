@@ -1,70 +1,259 @@
-<label class="switch">
-    <input class="toggle" type="checkbox">
-    <span class="slider"></span>
-    <span class="card-side"></span>
-</label>
+<%- include('./partials/head') %>
+    <div class="wrapper">
 
-<style>
-    /* slider */
+        <header>
+            <p>leerjaar 1 - 2023/24</p>
+            <h1>Frontend <span>Design</span> <span>&</span> <span>Development</span></h1>
+        </header>
 
-    --input-focus: var(--two);
-    --font-color: #323232;
-    --font-color-sub: #666;
-    --bg-color: #fff;
-    --bg-color-alt: #666;
-    --main-color: #323232;
+        <main>
 
-    .switch {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        width: 50px;
-        height: 20px;
-    }
+            <div class="container">
 
-    .toggle {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
+                <!-- loop waardoor dit li element voor elk persoon word herhaald -->
+                <% persons.forEach(person=> { %>
+                    <article class="profilecard">
+                        <a href="./person/<%= person.id %>">
+                            <h2>
+                                <%=person.name %>
+                            </h2>
+                        </a>
+                        <p class="surname">
+                            <%=person.prefix %>
+                                <%=person.surname %>
+                        </p>
+                        <p class="nickname">
+                            <%=person.nickname %>
+                        </p>
+                        <img src="<%= (person.avatar == '') ? 'assets/placeholder.jpg' : person.avatar %>"
+                            onerror="this.src='assets/replace.jpeg'">
+                    </article>
+                    <% }) %>
 
-    .slider {
-        border-radius: 5px;
-        border: 2px solid var(--main-color);
-        box-shadow: 4px 4px var(--main-color);
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: var(--bg-colorcolor);
-        transition: 0.3s;
-    }
+            </div>
 
-    .slider:before {
-        box-sizing: border-box;
-        position: absolute;
-        content: "";
-        height: 20px;
-        width: 20px;
-        border: 2px solid var(--main-color);
-        border-radius: 5px;
-        left: -2px;
-        bottom: 2px;
-        background-color: var(--bg-color);
-        box-shadow: 0 3px 0 var(--main-color);
-        transition: 0.3s;
-    }
+            <div class="back-to-top">
+                <button class="scroll-btn" onclick="topFunction()">back to top </button>
+            </div>
+    </div>
 
-    .toggle:checked+.slider {
-        background-color: var(--input-focus);
-    }
+    <%- include('./partials/foot') %>
 
-    .toggle:checked+.slider:before {
-        transform: translateX(30px);
-    }
-</style>
+
+
+
+
+
+
+        <style>
+            header {
+                position: sticky;
+                top: 0;
+                z-index: 10;
+                width: 100vw;
+                height: 9rem;
+                background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, var(--offwhite) 23%);
+                font-family: var(--font-three);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: var(--space-big);
+                margin-bottom: 8rem;
+
+                p {
+                    font-style: italic;
+                    margin: -0.7rem 0;
+                    font-family: var(--font-three);
+                }
+            }
+
+            main {
+                display: grid;
+                place-items: center;
+            }
+
+            .container {
+                display: grid;
+                grid-template-columns: 28vw 38vw 28vw;
+                width: 100vw;
+                scroll-snap-type: y mandatory;
+            }
+
+            @keyframes show {
+                from {
+                    opacity: 0;
+                    margin-top: 10rem;
+                    scale: 0.5;
+                }
+
+                to {
+                    opacity: 100;
+                    margin-top: 0;
+                    scale: 1;
+                }
+            }
+
+            /* cards styling */
+
+            .profilecard {
+                scroll-snap-align: center;
+                display: grid;
+                grid-template-areas:
+                    "name"
+                    "surname"
+                    "avatar"
+                    "nickname"
+                    "bio"
+                    "links";
+                justify-items: center;
+                width: 90%;
+                height: 90%;
+                max-height: 45vw;
+                background-color: var(--blue);
+                padding: var(--space-half);
+                margin: var(--space-reg) var(--space-reg);
+                list-style: none;
+                transition: 0.5s ease-in-out;
+
+                border-radius: 0.5rem;
+                border: 0.5vmin solid var(--dark);
+                box-shadow: 0.5rem 0.5rem var(--dark);
+            }
+
+            .profilecard:nth-of-type(5n) {
+                background-color: var(--red);
+            }
+
+            .profilecard:nth-of-type(5n + 1) {
+                background-color: var(--orange);
+            }
+
+            .profilecard:nth-of-type(5n + 2) {
+                background-color: var(--yellow);
+            }
+
+            .profilecard:nth-of-type(5n + 3) {
+                background-color: var(--green);
+            }
+
+            h2 {
+                grid-area: name;
+                font-size: 1.2rem;
+            }
+
+            .surname {
+                grid-area: surname;
+                font-weight: bold;
+            }
+
+            .nickname {
+                grid-area: nickname;
+                font-weight: bolder;
+                font-style: italic;
+            }
+
+            img {
+                grid-area: avatar;
+                height: 80px;
+                width: 80px;
+                border-radius: 4px;
+            }
+
+            /* back to top */
+
+            .back-to-top button {
+                font-family: var(--font-three);
+                color: var(--offwhite);
+                background-color: var(--purple);
+                display: none;
+                position: fixed;
+                bottom: 20px;
+                right: 30px;
+                z-index: 110;
+                outline: none;
+                padding: var(--space-half);
+                transition: all 0.15s ease-in-out;
+                border-radius: 0.1rem;
+                border: 0.4vmin solid var(--dark);
+                box-shadow: 0.25rem 0.25rem var(--dark), 0.35rem 0.35rem var(--offwhite);
+            }
+
+            .back-to-top button:hover {
+                scale: 1.05;
+                background-color: var(--purple-hov);
+                box-shadow: 0.35rem 0.35rem var(--dark), 0.45rem 0.45rem var(--offwhite);
+            }
+
+            .back-to-top button:active {
+                scale: 0.95;
+                box-shadow: 0.15rem 0.15rem var(--dark), 0.25rem 0.25rem var(--offwhite);
+            }
+
+            /* media querys */
+
+            @media (max-width: 480px) {
+                .container {
+                    display: grid;
+                    grid-template-columns: 45vw 45vw;
+                    justify-content: center;
+                    max-width: 100vw;
+                }
+
+                .profilecard {
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+
+                    h2 {
+                        font-size: 1rem;
+                    }
+
+                    img {
+                        height: 50px;
+                        width: 50px;
+                    }
+                }
+            }
+
+            @media (min-width: 880px) {
+                .container {
+                    max-width: 80vw;
+                    grid-template-columns: 1fr 1fr 1fr;
+                }
+            }
+
+            /* @supports  */
+            @media (prefers-reduced-motion: no-preference) {
+                article {
+                    scale: 0.75;
+                    opacity: 0;
+                    animation: fade-in linear forwards;
+                    animation-timeline: view();
+                    animation-range: entry 75px;
+                }
+
+                @keyframes fade-in {
+                    to {
+                        scale: 1;
+                        opacity: 1;
+                    }
+                }
+            }
+
+
+            html {
+                --black: #121212;
+                --white: #f3f3f3;
+                --offwhite: #efefef;
+                --dark-grey: #444444;
+                --grey: #666;
+                --dark: #05060f;
+                --blue: #65a5c7;
+                --red: #ee7214;
+                --orange: #f7b787;
+                --green: #79c39e;
+                --yellow: #faca78;
+                --purple: #664eff
+            }
+        </style>
