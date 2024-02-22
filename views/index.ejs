@@ -22,13 +22,14 @@
               <h2>
                 <%=person.name %>
               </h2>
-            </a>
+              </a>
+          
             <p class="surname">
               <%=person.prefix %>
                 <%=person.surname %>
             </p>
             <img src="<%= (person.avatar == '') ? 'assets/placeholder.jpg' : person.avatar %>"
-              onerror="this.src='assets/replace.jpeg'">
+              onerror="this.src='assets/replace.jpeg'" alt="avatar">
             <p class="nickname">
               <%=person.nickname %>
             </p>

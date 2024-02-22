@@ -16,23 +16,24 @@ html {
   --grey: #666;
   --dark: #05060f;
 
-  --blue: #1810dc;
+  --blue: #0000fe;
   --cyan: #0097bd;
   --yellow: #fff74e;
   --red: #df152f;
 
   --light-blue: #65a5c7;
-  --orange: #ee7214;
+  --orange: #f4982e;
   --soft-orange: #f7b787;
   --lemon: #faca78;
   --green: #79c39e;
-  --purple: #664eff;
+  --purple: #818cff;
+  --strong-blue: #0000fe;
 
   --space-big: 1.5rem;
   --space-reg: 1rem;
-  --space-third: 0.7rem;
+  --space-third: 0.75rem;
   --space-half: 0.5rem;
-  --space-small: 0.2rem;
+  --space-small: 0.25rem;
 }
 
 * {
@@ -53,7 +54,7 @@ body {
 /* text styling */
 
 h1 {
-  color: var(--blue);
+  color: var(--strong-blue);
   font-family: var(--font-two);
   font-size: 4rem;
 }
@@ -66,10 +67,17 @@ a {
   font-family: var(--font-two);
   color: var(--dark);
   text-decoration: none;
+  transition: all 0.25s ease-in-out;
 }
 
 a:visited {
   color: var(--dark);
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--blue);
+  font-size: 1.1rem;
 }
 
 header p {
@@ -79,6 +87,10 @@ header p {
 img {
   width: 100px;
   border-radius: 6px;
+}
+
+button {
+  font-family: var(--font-two);
 }
 
 /* document */
@@ -109,7 +121,6 @@ header {
   display: grid;
   place-items: center;
   max-width: 100vw;
-  overflow: hidden;
   grid-template-columns: 28vw 38vw 28vw;
   margin-top: var(--space-big);
 }
@@ -125,6 +136,7 @@ header {
   border-radius: 0.25rem;
   border: 0.5vmin solid var(--dark);
   box-shadow: 0.3rem 0.3rem var(--dark);
+  overflow: hidden;
 }
 
 .profilecard:nth-of-type(5n) {
@@ -146,13 +158,12 @@ header {
 /* button */
 
 .back-to-top button {
-  font-family: var(--font-three);
   color: var(--dark);
   background-color: var(--yellow);
   display: none;
   position: fixed;
   bottom: 1.5rem;
-  right: 2rem;
+  right: 1.3rem;
   z-index: 110;
   outline: none;
   padding: var(--space-third);
@@ -176,12 +187,11 @@ header {
 }
 
 .filter-btn {
-  font-family: var(--font-three);
   color: var(--dark);
   background-color: var(--yellow);
   position: fixed;
   bottom: 1.5rem;
-  left: 2rem;
+  left: 1.3rem;
   z-index: 110;
   outline: none;
   padding: var(--space-third);
@@ -229,12 +239,12 @@ header {
     box-shadow: 0 1px 1px var(--dark);
     animation: shrink linear forwards;
     animation-timeline: view(block);
-    animation-range: 15% 25%;
+    animation-range: 0% 25%;
   }
 
   @keyframes shrink {
     to {
-      height: 15vh;
+      height: 13vh;
     }
   }
 
@@ -242,7 +252,7 @@ header {
     opacity: 100;
     animation: shrink-font linear forwards;
     animation-timeline: view(block);
-    animation-range: 15% 20%;
+    animation-range: 18% 20%;
   }
 
   @keyframes shrink-font {
@@ -258,7 +268,7 @@ header {
     translate: 0 10px;
     animation: appear linear forwards;
     animation-timeline: view(block);
-    animation-range: 24% 25%;
+    animation-range: 20% 23%;
   }
 
   @keyframes appear {
@@ -284,11 +294,9 @@ header {
   }
 }
 
-
 /* media query */
 
 @media (max-width: 500px) {
-
   h1 {
     font-size: 2rem;
   }
@@ -308,7 +316,7 @@ header {
   .container {
     grid-template-columns: 30vw 30vw 30vw;
   }
-  
+
   .profilecard {
     overflow: hidden;
   }
