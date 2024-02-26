@@ -7,6 +7,31 @@
       <h1>Frontend Design & Development</h1>
     </header>
 
+    <div class="messageboard">
+      <h2>Messages</h2>
+
+      <ul>
+        <% messages.forEach(message=> { %>
+          <li>
+            <%= message %>
+          </li>
+          <% }) %>
+      </ul>
+
+      <form method="post" action="/">
+        <!-- <label for="name">Name:
+          <input type="text" id="name" name="name">
+        </label> -->
+        <label for="message">
+          Message:
+          <textarea required name="message"></textarea>
+        </label>
+        <button type="submit">Send!</button>
+      </form>
+
+    </div>
+
+
     <main>
 
       <div class="container">

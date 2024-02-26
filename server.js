@@ -22,6 +22,13 @@ app.set("views", "./views");
 // Gebruik de map 'public' voor statische resources (stylehseets css, assets, etc)
 app.use(express.static("public"));
 
+//zorg dat werken met request data makkelijker wordt
+app.use(express.urlencoded({extended: true}))
+
+// message board functionaliteit
+//array messages
+const messages = []
+
 //! 2. Routes die HTTP Requests and Responses afhandelen
 // Maak een GET route voor de index
 app.get("/", function (request, response) {
@@ -35,9 +42,14 @@ app.get("/", function (request, response) {
     // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
 
     // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
-    response.render("index", { persons: apiData.data, squads: squadData.data });
+    response.render("index", { persons: apiData.data, squads: squadData.data, messages: messages });
   });
 });
+
+app.post('/', function (request, response) {
+  messages.push(request.body.message)
+  response.redirect(303, "/");
+})
 
 // Maak een GET route voor een detailpagina met een request parameter id
 app.get("/person/:id", function (request, response) {
@@ -73,11 +85,7 @@ app.get("/filter/:q", function (request, response) {
   });
 });
 
-// Maak een POST route voor de index
-app.post("/", function (request, response) {
-  // Er is nog geen afhandeling van POST, redirect naar GET op /
-  response.redirect(303, "/");
-});
+
 
 //! 3. Start de webserver
 // Stel het poortnummer in waar express op moet gaan luisteren
