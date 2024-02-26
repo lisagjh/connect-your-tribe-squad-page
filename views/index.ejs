@@ -8,38 +8,47 @@
     </header>
 
     <div class="messageboard">
-      <h2>Messages</h2>
 
-      <ul>
-        <% messages.forEach(message=> { %>
-          <li>
-            <%= message %>
-          </li>
-          <% }) %>
-      </ul>
 
-      <form method="post" action="/">
-        <!-- <label for="name">Name:
-          <input type="text" id="name" name="name">
-        </label> -->
+      <form class="msg-form" method="post" action="/">
+        <h4>leave a comment!</h4>
+        <label for="name">name:
+          <input required type="text" id="name" name="name">
+        </label>
         <label for="message">
-          Message:
+          message:
           <textarea required name="message"></textarea>
         </label>
-        <button type="submit">Send!</button>
+        <button type="submit">send</button>
       </form>
 
+      <div class="message-container">
+        <h2>comments</h2>
+       <div class="message-post">
+          <% for(let count=0; count < messages.length; count++){ %>
+            <section class="message">
+              <h3>
+                <%= names[count] %>:
+              </h3>
+              <p>
+                <%= messages[count] %>
+              </p>
+    
+            </section>
+            <% } %>
+       </div>
+      </div>
     </div>
 
 
     <main>
 
-      <div class="container">
-        <button class="filter-btn"><i class='bx bx-filter'></i> FILTERS</button>
-        <div class="filter-view">
-          <h4>FILTERS</h4>
-        </div>
+      <button class="filter-btn"><i class='bx bx-filter'></i> FILTERS</button>
+      <div class="filter-view">
+        <h4>FILTERS</h4>
+      </div>
 
+      <div class="container">
         <!-- loop waardoor dit li element voor elk persoon word herhaald -->
         <% persons.forEach(person=> { %>
           <article class="profilecard">
@@ -66,6 +75,8 @@
       <div class="back-to-top">
         <button class="scroll-btn" onclick="topFunction()">BACK TO TOP</button>
       </div>
+
+      <button class="show-msgs"><i class='bx bxs-comment-add'></i></button> 
   </div>
 
   </main>

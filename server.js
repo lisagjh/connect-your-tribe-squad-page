@@ -28,6 +28,7 @@ app.use(express.urlencoded({extended: true}))
 // message board functionaliteit
 //array messages
 const messages = []
+const names = []
 
 //! 2. Routes die HTTP Requests and Responses afhandelen
 // Maak een GET route voor de index
@@ -42,12 +43,13 @@ app.get("/", function (request, response) {
     // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
 
     // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
-    response.render("index", { persons: apiData.data, squads: squadData.data, messages: messages });
+    response.render("index", { persons: apiData.data, squads: squadData.data, messages: messages, names: names });
   });
 });
 
 app.post('/', function (request, response) {
   messages.push(request.body.message)
+  names.push(request.body.name)
   response.redirect(303, "/");
 })
 
