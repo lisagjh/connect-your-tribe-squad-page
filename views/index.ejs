@@ -7,46 +7,12 @@
       <h1>Frontend Design & Development</h1>
     </header>
 
-    <div class="messageboard">
-
-
-      <form class="msg-form" method="post" action="/">
-        <h4>leave a comment!</h4>
-        <label for="name">name:
-          <input required type="text" id="name" name="name">
-        </label>
-        <label for="message">
-          message:
-          <textarea required name="message"></textarea>
-        </label>
-        <button type="submit">send</button>
-      </form>
-
-      <div class="message-container">
-        <h2>comments</h2>
-       <div class="message-post">
-          <% for(let count=0; count < messages.length; count++){ %>
-            <section class="message">
-              <h3>
-                <%= names[count] %>:
-              </h3>
-              <p>
-                <%= messages[count] %>
-              </p>
-    
-            </section>
-            <% } %>
-       </div>
-      </div>
-    </div>
-
-
     <main>
 
-      <button class="filter-btn"><i class='bx bx-filter'></i> FILTERS</button>
+      <!-- <button class="filter-btn"><i class='bx bx-filter'></i> FILTERS</button>
       <div class="filter-view">
         <h4>FILTERS</h4>
-      </div>
+      </div> -->
 
       <div class="container">
         <!-- loop waardoor dit li element voor elk persoon word herhaald -->
@@ -76,7 +42,41 @@
         <button class="scroll-btn" onclick="topFunction()">BACK TO TOP</button>
       </div>
 
-      <button class="show-msgs"><i class='bx bxs-comment-add'></i></button> 
+  </div>
+
+  <div class="messageboard">
+
+    <!-- <button class="show-msgs"><i class='bx bxs-comment-add'></i></button>  -->
+
+
+    <form class="msg-form" method="post" action="/">
+      <h4>leave a comment!</h4>
+      <label for="name">name:
+        <input required type="text" id="name" name="name">
+      </label>
+      <label for="message">
+        message:
+        <textarea required name="message"></textarea>
+      </label>
+      <button type="submit">send</button>
+    </form>
+
+    <div class="message-container">
+      <h2>comments</h2>
+     <div class="message-post">
+        <% for(let count=0; count < messages.length; count++){ %>
+          <section class="message">
+            <h3>
+              <%= names[count] %>:
+            </h3>
+            <p>
+              <%= messages[count] %>
+            </p>
+  
+          </section>
+          <% } %>
+     </div>
+    </div>
   </div>
 
   </main>

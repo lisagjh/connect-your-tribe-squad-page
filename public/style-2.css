@@ -160,16 +160,21 @@ header {
 .messageboard {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  align-items: start;
   transition: all 0.35s ease-in-out;
 }
 
 form {
   flex-direction: column;
-  width: 30%;
+  width: 25%;
   animation: showForm 0.35s ease-in-out;
   text-transform: capitalize;
+  padding: var(--space-half);
+  border-right: 1px solid var(--dark-grey);
+
+  label {
+    font-size: smaller;
+  }
 
   input {
     width: 100%;
@@ -187,7 +192,8 @@ form {
 .message-container {
   display: flex;
   flex-direction: column;
-  width: 65%;
+  justify-content: center;
+  width: 70%;
   padding: var(--space-reg);
 }
 
@@ -195,11 +201,13 @@ form {
   display: flex;
   flex-direction: row;
   overflow: scroll;
-  padding: var(--space-half);
 }
 
 .message {
   width: 12rem;
+  border: 1px solid var(--dark-grey);
+  padding: var(--space-small) var(--space-half);
+  border-radius: 4px;
 }
 
 .message h3 {
@@ -223,7 +231,7 @@ form {
   margin: var(--space-reg) var(--space-reg);
   border: 0.2vmin solid var(--dark);
   border-radius: 6px;
-  box-shadow: 0.3rem 0.3rem var(--dark);
+  box-shadow: 0.3rem 0.3rem var(--dark-grey);
   overflow: hidden;
 }
 
