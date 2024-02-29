@@ -24,13 +24,13 @@ De live website vind je [hier](https://connect-your-tribe-squad-page.onrender.co
 
 ## Kenmerken
 * NodeJS
-Node is een platform waardoor Javascript buiten de browser gebruikt kan worden.
+  * Node is een platform waardoor Javascript buiten de browser gebruikt kan worden.
 
 * Express
-Express is een Node Framework, dit helpt bij het gebruik van de routes en servers.
+  * Express is een Node Framework, dit helpt bij het gebruik van de routes en servers.
 
 * EJS
-EJS is een Node Template. Dit gebruikt dus Node om HTML te genereren, waardoor jij een stuk minder hoeft te typen doordat je bijvoorbeeld ook loops kunt gebruiken.
+  * EJS is een Node Template. Dit gebruikt dus Node om HTML te genereren, waardoor jij een stuk minder hoeft te typen doordat je bijvoorbeeld ook loops kunt gebruiken.
 
 ## Installatie
 Hiervoor heb ik met de terminal in Visual Studio Code een aantal commando's voor gebruikt voor het initialiseren npm init, installeren npm install en testen npm start. 
