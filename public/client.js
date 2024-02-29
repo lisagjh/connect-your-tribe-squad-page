@@ -31,5 +31,5 @@ const filterBtn = document.querySelector(".filter-btn");
 const filterView = document.querySelector(".filter-view");
 
 filterBtn.addEventListener("click", function () {
-  filterView.classList.toggle('show');
+  filterView.classList.toggle("show");
 });

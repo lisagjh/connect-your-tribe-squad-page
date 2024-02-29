@@ -1,0 +1,679 @@
+<div class="container">
+
+    <!-- van anne geleend -->
+    <% const endOfFirstColumn=Math.ceil(persons.length / 3); const endOfSecondColumn=Math.ceil(persons.length * 2/3);
+        const endOfThirdColumn=persons.length; %>
+
+
+        <div class="column column-reverse">
+            <% for(var i=0; i < endOfFirstColumn; i++) { %>
+                <!-- zolang i kleiner is dan de lengte van de eerste kolom, voer deze code uit en tel er elke keer een i bij op. Zo komen er dus i aantal li's -->
+                <a href="./person/<%= persons[i].id %>">
+                    <article class="profilecard">
+                        <img class="person-avatar"
+                            src="<%- persons[i].avatar %> <%= (persons[i].avatar == '') ? 'images/fallback.png' : persons[i].avatar %>"
+                            onerror="this.src='images/fallback.png'" alt="avatar">
+                        <p class="name"><%- persons[i].name %> <%- persons[i].prefix %> <%- persons[i].surname %></p>
+                        <p class="nickname"><%- persons[i].nickname %></p>
+                        <!-- <img class="laptop" src="assets/laptop-svgrepo-com.svg"> -->
+                        </li>
+                </a>
+                <% } %>
+        </div>
+
+
+        <div class="column">
+            <% for(var i=endOfFirstColumn; i < endOfSecondColumn; i++) { %>
+                <!-- zolang i (in dit geval het einde van de eerste kolom) kleiner is dan de lengte van de tweede kolom, voer deze code uit en tel er elke keer een i bij op. Zo komen er dus i aantal li's -->
+                <a href="./person/<%= persons[i].id %>">
+                    <article class="card">
+                        <img class="person-avatar"
+                            src="<%- persons[i].avatar %> <%= (persons[i].avatar == '') ? 'images/fallback.png' : persons[i].avatar %>"
+                            onerror="this.src='images/fallback.png'" alt="avatar">
+                        <p class="name"><%- persons[i].name %> <%- persons[i].prefix %> <%- persons[i].surname %></p>
+                        <p class="nickname"><%- persons[i].nickname %></p>
+                        <!-- <img class="laptop" src="assets/laptop-svgrepo-com.svg"> -->
+                    </article>
+                </a>
+                <% } %>
+        </div>
+
+
+        <div class="column column-reverse">
+            <% for(var i=0; i < endOfFirstColumn; i++) { %>
+                <!-- zolang i kleiner is dan de lengte van de eerste kolom, voer deze code uit en tel er elke keer een i bij op. Zo komen er dus i aantal li's -->
+                <a href="./person/<%= persons[i].id %>">
+                    <article class="profilecard">
+                        <img class="person-avatar"
+                            src="<%- persons[i].avatar %> <%= (persons[i].avatar == '') ? 'images/fallback.png' : persons[i].avatar %>"
+                            onerror="this.src='images/fallback.png'" alt="avatar">
+                        <p class="name"><%- persons[i].name %> <%- persons[i].prefix %> <%- persons[i].surname %></p>
+                        <p class="nickname"><%- persons[i].nickname %></p>
+                        <!-- <img class="laptop" src="assets/laptop-svgrepo-com.svg"> -->
+                        </li>
+                </a>
+                <% } %>
+        </div>
+
+
+
+        <!-- !! mijn code - v2 -->
+
+
+        <%- include('./partials/head') %>
+            <div class="wrapper">
+
+                <header>
+                    <p>leerjaar 1 - 2023/24</p>
+                    <h1>FDND</h1>
+                    <h1>Frontend Design & Development</h1>
+                </header>
+
+                <main>
+
+                    <button class="filter-btn"><i class='bx bx-filter'></i> FILTERS</button>
+                    <div class="filter-view">
+                        <h4>FILTERS</h4>
+                        <a href="/squad/3">Squad D</a>
+                        <a href="/squad/4">Squad E</a>
+                        <a href="/squad/5">Squad F</a>
+                    </div>
+
+                    <div class="container">
+                        <!-- loop waardoor dit li element voor elk persoon word herhaald -->
+                        <% persons.forEach(person=> { %>
+                            <article class="profilecard">
+                                <a href="./person/<%= person.id %>">
+                                    <h2>
+                                        <%=person.name %>
+                                    </h2>
+                                </a>
+
+                                <p class="surname">
+                                    <%=person.prefix %>
+                                        <%=person.surname %>
+                                </p>
+
+                                <img src="<%= (person.avatar == '') ? 'assets/placeholder.jpg' : person.avatar %>"
+                                    onerror="this.src='assets/replace.jpeg'" alt="avatar">
+
+                                <p class="nickname">
+                                    <%=person.nickname %>
+                                </p>
+                            </article>
+                            <% }) %>
+
+                    </div>
+
+                    <div class="back-to-top">
+                        <button class="scroll-btn" onclick="topFunction()">BACK TO TOP</button>
+                    </div>
+
+            </div>
+
+            <div class="messageboard">
+
+                <!-- <button class="show-msgs"><i class='bx bxs-comment-add'></i></button>  -->
+
+
+                <form class="msg-form" method="post" action="/">
+                    <h4>leave a comment!</h4>
+                    <label for="name">name:
+                        <input required type="text" id="name" name="name">
+                    </label>
+                    <label for="message">
+                        message:
+                        <textarea required name="message"></textarea>
+                    </label>
+                    <button type="submit">send</button>
+                </form>
+
+                <div class="message-container">
+                    <h2>comments</h2>
+                    <div class="message-post">
+                        <% for(let count=0; count < messages.length; count++){ %>
+                            <section class="message">
+                                <h3>
+                                    <%= names[count] %>:
+                                </h3>
+                                <p>
+                                    <%= messages[count] %>
+                                </p>
+
+                            </section>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
+
+            </main>
+            <%- include('./partials/foot') %>
+
+
+
+                <!-- !!! mijn css - v2 -->
+
+
+                @import
+                url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Tangerine:wght@400;700&display=swap");
+                /* "Inter", sans-serif */
+
+                @import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+                /* "Dela Gothic One", sans-serif; */
+
+                html {
+                --font-one: "Inter", arial, helvetica, sans-serif;
+                --font-two: "Dela Gothic One", arial, helvetica, sans-serif;
+
+                --black: #121212;
+                --white: #f6f7f7;
+                --offwhite: #f6f4f2;
+                --grey: #e1e1e1;
+                --dark-grey: #444444;
+                --dark: #171717;
+
+                --space-big: 1.5rem;
+                --space-reg: 1rem;
+                --space-third: 0.75rem;
+                --space-half: 0.5rem;
+                --space-small: 0.25rem;
+                }
+
+                * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                }
+
+                body {
+                display: grid;
+                place-items: center;
+                background-color: var(--offwhite);
+                color: var(--black);
+                font-family: var(--font-one);
+
+                background-color: #f3f3f3;
+                background-image: linear-gradient(
+                0deg,
+                transparent 24%,
+                var(--grey) 25%,
+                var(--grey) 26%,
+                transparent 27%,
+                transparent 74%,
+                var(--grey) 75%,
+                var(--grey) 76%,
+                transparent 77%,
+                transparent
+                ),
+                linear-gradient(
+                90deg,
+                transparent 24%,
+                var(--grey) 25%,
+                var(--grey) 26%,
+                transparent 27%,
+                transparent 74%,
+                var(--grey) 75%,
+                var(--grey) 76%,
+                transparent 77%,
+                transparent
+                );
+                background-size: 6rem 6rem;
+                }
+
+                /* text styling */
+
+                h1 {
+                color: var(--strong-blue);
+                font-family: var(--font-two);
+                font-size: 4.5rem;
+                }
+
+                h1:last-of-type {
+                font-size: 1.7rem;
+                }
+
+                header p {
+                font-size: 1.25rem;
+                font-style: italic;
+                color: var(--red);
+                }
+
+                .nickname {
+                font-size: 1.2rem;
+                }
+
+                a {
+                color: var(--black);
+                text-decoration: none;
+                transition: all 0.25s ease-in-out;
+                }
+
+                a:visited {
+                color: var(--black);
+                }
+
+                a:hover {
+                text-decoration: underline;
+                color: var(--grey);
+                font-size: 1.1rem;
+                }
+
+                img {
+                width: 100px;
+                border-radius: 6px;
+                }
+
+                /* document */
+
+                .wrapper {
+                display: grid;
+                place-items: center;
+                width: 100%;
+                height: 100%;
+                }
+
+                header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100vw;
+                background: rgba(255, 255, 255, 0.26);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                width: 100vw;
+                height: 20vh;
+                padding: var(--space-half) 0;
+                position: sticky;
+                top: 0;
+                z-index: 10;
+                text-align: center;
+
+                h1 {
+                margin: -0.5rem;
+                }
+
+                h1:last-of-type {
+                margin: -2rem;
+                }
+                }
+
+                .container {
+                display: grid;
+                justify-content: center;
+                align-items: center;
+                max-width: 100vw;
+                grid-template-columns: 1fr 1fr 1fr;
+                margin-top: var(--space-big);
+                }
+
+                .messageboard {
+                background-color: var(--grey);
+                width: 100%;
+                padding: var(--space-big);
+                }
+
+                /* message box - form */
+
+                .messageboard {
+                display: flex;
+                flex-direction: row;
+                align-items: start;
+                transition: all 0.35s ease-in-out;
+                }
+
+                form {
+                flex-direction: column;
+                width: 25%;
+                animation: showForm 0.35s ease-in-out;
+                text-transform: capitalize;
+                padding: var(--space-half);
+                border-right: 1px solid var(--dark-grey);
+
+                label {
+                font-size: smaller;
+                }
+
+                input {
+                width: 100%;
+                }
+
+                textarea {
+                width: 100%;
+                }
+                button {
+                width: 50%;
+                place-self: center;
+                }
+                }
+
+                .message-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 70%;
+                padding: var(--space-reg);
+                }
+
+                .message-post {
+                display: flex;
+                flex-direction: row;
+                overflow: scroll;
+                }
+
+                .message {
+                width: 12rem;
+                border: 1px solid var(--dark-grey);
+                padding: var(--space-small) var(--space-half);
+                border-radius: 4px;
+                }
+
+                .message h3 {
+                text-transform: uppercase;
+                padding: 0 var(--space-small);
+                }
+
+                .message p {
+                padding: 0 var(--space-small);
+                }
+
+                /* cards */
+
+                .profilecard {
+                background-color: var(--white);
+                display: grid;
+                place-items: center;
+                width: 90%;
+                height: 90%;
+                padding: var(--space-half);
+                margin: var(--space-reg) var(--space-reg);
+                border: 0.2vmin solid var(--dark);
+                border-radius: 6px;
+                box-shadow: 0.3rem 0.3rem var(--dark-grey);
+                overflow: hidden;
+                }
+
+                .hexagon {
+                width: 10em;
+                height: 10em;
+                margin: 0.2em;
+                background-color: #111;
+                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+                }
+
+                .hexagon img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                }
+
+                /* button */
+
+                .show-msgs {
+                position: fixed;
+                top: 1rem;
+                left: 1.5rem;
+                background-color: transparent;
+                color: var(--dark-grey);
+                font-size: 2rem;
+                padding: var(--space-small);
+                border: none;
+                transition: all 0.25s ease-in-out;
+                z-index: 15;
+                }
+
+                .show-msgs:hover {
+                scale: 1.05;
+                color: var(--dark);
+                }
+                .show-msgs:active {
+                scale: 0.95;
+                }
+
+
+                .back-to-top button {
+                background-color: var(--offwhite);
+                display: none;
+                position: fixed;
+                bottom: 1.5rem;
+                right: 1.3rem;
+                z-index: 110;
+                border: 0.2vmin solid var(--dark);
+                box-shadow: 0.2rem 0.2rem var(--dark), 0.25rem 0.25rem var(--offwhite);
+                outline: none;
+                padding: var(--space-third);
+                transition: all 0.15s ease-in-out;
+                border-radius: 0.1rem;
+                }
+
+                .back-to-top button:hover {
+                background-color: var(--grey);
+                box-shadow: 0.35rem 0.35rem var(--dark), 0.4rem 0.4rem var(--offwhite);
+                scale: 1.05;
+                }
+
+                .back-to-top button:active {
+                scale: 0.95;
+                background-color: var(--dark-grey);
+                box-shadow: 0.2rem 0.2rem var(--dark), 0.25rem 0.25rem var(--offwhite);
+                color: var(--offwhite);
+                }
+
+                .filter-btn {
+                background-color: var(--offwhite);
+                position: fixed;
+                bottom: 1.5rem;
+                left: 1.3rem;
+                z-index: 110;
+                outline: none;
+                border: 0.2vmin solid var(--dark);
+                box-shadow: 0.2rem 0.2rem var(--dark), 0.25rem 0.25rem var(--offwhite);
+                padding: var(--space-third);
+                transition: all 0.15s ease-in-out;
+                border-radius: 0.1rem;
+                }
+
+                .filter-btn:hover {
+                background-color: var(--grey);
+                box-shadow: 0.35rem 0.35rem var(--dark), 0.4rem 0.4rem var(--offwhite);
+                scale: 1.05;
+                }
+
+                .filter-btn:active {
+                background-color: var(--dark-grey);
+                color: var(--offwhite);
+                box-shadow: 0.2rem 0.2rem var(--dark), 0.25rem 0.25rem var(--offwhite);
+                scale: 0.95;
+                }
+
+                .filter-view {
+                display: none;
+                background-color: var(--offwhite);
+                height: 19rem;
+                width: 15rem;
+                padding: var(--space-third);
+                position: fixed;
+                bottom: 5rem;
+                left: 2rem;
+                z-index: 110;
+                border: 0.2vmin solid var(--dark);
+                box-shadow: 0.2rem 0.2rem var(--dark), 0.25rem 0.25rem var(--offwhite);
+                }
+
+                .show {
+                display: block;
+                }
+
+                /* scroll animation */
+
+                @media (prefers-reduced-motion: no-preference) {
+                header {
+                box-shadow: 0 1px 1px var(--dark-grey);
+                animation: shrink linear forwards;
+                animation-timeline: view(block);
+                animation-range: 10% 25%;
+                }
+
+                @keyframes shrink {
+                to {
+                height: 10vh;
+                }
+                }
+
+                h1 {
+                opacity: 100;
+                animation: shrink-font linear forwards;
+                animation-timeline: view(block);
+                animation-range: 20% 22%;
+                }
+
+                @keyframes shrink-font {
+                to {
+                opacity: 0;
+                font-size: 2rem;
+                translate: 0 -5px;
+                }
+                }
+
+                h1:last-of-type {
+                opacity: 0;
+                animation: appear linear forwards;
+                animation-timeline: view(block);
+                animation-range: 21% 23%;
+                }
+
+                @keyframes appear {
+                to {
+                opacity: 100;
+                translate: 0 5px;
+                }
+                }
+
+                .profilecard {
+                scale: 0.75;
+                opacity: 0;
+                animation: fade-in linear forwards;
+                animation-timeline: view();
+                animation-range: entry 10% 20%;
+                }
+
+                @keyframes fade-in {
+                to {
+                scale: 1;
+                opacity: 1;
+                }
+                }
+                }
+
+                /* media query */
+
+                @media (max-width: 650px) {
+                h1 {
+                font-size: 3rem;
+                }
+
+                h1:last-of-type {
+                font-size: 1.1rem;
+                }
+
+                h2 {
+                font-size: 1.5rem;
+                }
+
+                img {
+                width: 50px;
+                }
+
+                .container {
+                grid-template-columns: 30vw 30vw 30vw;
+                }
+
+                .profilecard {
+                overflow: hidden;
+                }
+                }
+
+                @media (max-width: 500px) {
+                h1:last-of-type {
+                font-size: 0.95rem;
+                }
+                }
+
+
+
+
+
+                <!-- versie 5? -->
+
+
+                <%- include('./partials/head') %>
+                    <div class="wrapper">
+
+                        <header>
+                            <p>leerjaar 1 - 2023/24</p>
+                            <h1>FDND</h1>
+                            <h1>Frontend Design & Development</h1>
+                        </header>
+
+                        <main>
+
+                            <div class="container-wrapper">
+                                <div class="column-container">
+
+                                    <% const endOfFirstColumn=Math.ceil(persons.length / 3); const
+                                        endOfSecondColumn=Math.ceil(persons.length * 2/3); const
+                                        endOfThirdColumn=persons.length; %>
+
+                                        <!-- column een -->
+                                        <div class="column column-reverse">
+                                            <% for(var i=0; i < endOfFirstColumn; i++) { %>
+                                                <a href="./person/<%= persons[i].id %>">
+                                                    <img src="<%= (persons.avatar == '') ? 'assets/placeholder.jpg' : persons.avatar %>"
+                                                        onerror="this.src='assets/replace.jpeg'" alt="avatar">
+
+                                                    <p class="name"><%- persons[i].name %> <%- persons[i].prefix %> <%-
+                                                                    persons[i].surname %></p>
+                                                    <p class="nickname"><%- persons[i].nickname %></p>
+                                                    </article>
+                                                </a>
+                                                <% } %>
+                                        </div>
+
+                                        <!-- column twee -->
+                                        <div class="column">
+                                            <% for(var i=endOfFirstColumn; i < endOfSecondColumn; i++) { %>
+                                                <a href="./person/<%= persons[i].id %>">
+                                                    <article class="card">
+
+                                                        <img src="<%= (persons.avatar == '') ? 'assets/placeholder.jpg' : persons.avatar %>"
+                                                            onerror="this.src='assets/replace.jpeg'" alt="avatar">
+
+                                                        <p class="name"><%- persons[i].name %> <%- persons[i].prefix %>
+                                                                    <%- persons[i].surname %></p>
+                                                        <p class="nickname"><%- persons[i].nickname %></p>
+                                                    </article>
+                                                </a>
+                                                <% } %>
+                                        </div>
+
+                                        <!-- column drie -->
+                                        <div class="column column-reverse">
+                                            <% for(var i=endOfSecondColumn; i < endOfThirdColumn; i++) { %>
+                                                <a href="./person/<%= persons[i].id %>">
+                                                    <article class="card">
+                                                        <img src="<%= (persons.avatar == '') ? 'assets/placeholder.jpg' : persons.avatar %>"
+                                                            onerror="this.src='assets/replace.jpeg'" alt="avatar">
+                                                        <p class="name"><%- persons[i].name %> <%- persons[i].prefix %>
+                                                                    <%- persons[i].surname %></p>
+                                                        <p class="nickname"><%- persons[i].nickname %></p>
+                                                    </article>
+                                                </a>
+                                                <% } %>
+                                        </div>
+
+                                </div>
+                            </div>
+
+                        </main>
+
+                        <%- include('./partials/foot') %>

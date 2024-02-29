@@ -23,35 +23,19 @@ app.set("views", "./views");
 app.use(express.static("public"));
 
 //zorg dat werken met request data makkelijker wordt
-app.use(express.urlencoded({extended: true}))
-
-// message board functionaliteit
-//array messages
-const messages = []
-const names = []
+app.use(express.urlencoded({ extended: true }));
 
 //! 2. Routes die HTTP Requests and Responses afhandelen
 // Maak een GET route voor de index
 app.get("/", function (request, response) {
   // Haal alle personen uit de WHOIS API op
   fetchJson(apiUrl + "/person").then((apiData) => {
-    // ?filter[squad_id][_eq]=3 = squad D filter
-    // ?filter[squad_id][_eq]=4 = squad E filter
-    // ?filter[squad_id][_eq]=5 = squad F filter
-    // ?sort=name = az sorteer
-    // apiData bevat gegevens van alle personen uit alle squads
-    // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
-
-    // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
-    response.render("index", { persons: apiData.data, squads: squadData.data, messages: messages, names: names });
+    response.render("index", {
+      persons: apiData.data,
+      squads: squadData.data,
+    });
   });
 });
-
-app.post('/', function (request, response) {
-  messages.push(request.body.message)
-  names.push(request.body.name)
-  response.redirect(303, "/");
-})
 
 // Maak een GET route voor een detailpagina met een request parameter id
 app.get("/person/:id", function (request, response) {
@@ -62,32 +46,39 @@ app.get("/person/:id", function (request, response) {
   });
 });
 
-// Maak een GET route voor de find/filter dingen
-app.get("/filter/:q", function (request, response) {
-  /*
-  filter voorbeeld
-  https://fdnd.directus.app/items/person/?filter={"name":"Koop"}
-  https://fdnd.directus.app/items/person/?filter={"name":{"_contains":"oo"}}
-  https://fdnd.directus.app/items/person/?filter={"name":{"_eq":"oo"}}
-  https://fdnd.directus.app/items/person/?filter={"bio":{"_icontains":"frontend"}}
-  ?filter[squad_id][_eq]=3 = squad D filter
-  ?filter[squad_id][_eq]=4 = squad E filter
-  ?filter[squad_id][_eq]=5 = squad F filter
-  ?sort=name = az sorteer
-  */
+// message board functionaliteit
+//array messages
+const messages = [];
+const names = [];
 
-  fetchJson(
-    "https://fdnd.directus.app/items/person/?filter=" + request.params.q
-  ).then((apiData) => {
-    // Render person.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
-    response.render("filter", {
+app.post("/", function (request, response) {
+  messages.push(request.body.message);
+  names.push(request.body.name);
+  response.redirect(303, "/");
+});
+
+// Maak een GET route voor een detailpagina met een request parameter id
+app.get("/squad/:id", function (request, response) {
+  let squadId = request.params.id;
+  let fetchUrl;
+  if (squadId == 3) {
+    fetchUrl = 'https://fdnd.directus.app/items/person/?filter={"squad_id":3}';
+  } else if (squadId == 4) {
+    fetchUrl = 'https://fdnd.directus.app/items/person/?filter={"squad_id":4}';
+  } else if (squadId == 5) {
+    fetchUrl = 'https://fdnd.directus.app/items/person/?filter={"squad_id":5}';
+  }
+
+  fetchJson(fetchUrl).then((apiData) => {
+    // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
+    response.render("index", {
       persons: apiData.data,
       squads: squadData.data,
+      messages: messages,
+      names: names,
     });
   });
 });
-
-
 
 //! 3. Start de webserver
 // Stel het poortnummer in waar express op moet gaan luisteren

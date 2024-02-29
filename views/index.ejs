@@ -8,76 +8,107 @@
     </header>
 
     <main>
+      <div class="wrapper">
 
-      <!-- <button class="filter-btn"><i class='bx bx-filter'></i> FILTERS</button>
-      <div class="filter-view">
-        <h4>FILTERS</h4>
-      </div> -->
+        <main>
+          <button class="filter-btn"><i class='bx bx-filter'></i> FILTERS</button>
+          <div class="filter-view">
+            <h4>FILTERS</h4>
+            <a href="/">Home</a>
+            <a href="/squad/3">Squad D</a>
+            <a href="/squad/4">Squad E</a>
+            <a href="/squad/5">Squad F</a>
+          </div>
 
-      <div class="container">
-        <!-- loop waardoor dit li element voor elk persoon word herhaald -->
-        <% persons.forEach(person=> { %>
-          <article class="profilecard">
-            <a href="./person/<%= person.id %>">
-              <h2>
-                <%=person.name %>
-              </h2>
-            </a>
+          <div class="container-wrapper">
+            <div class="column-container">
 
-            <p class="surname">
-              <%=person.prefix %>
-                <%=person.surname %>
-            </p>
-            <img src="<%= (person.avatar == '') ? 'assets/placeholder.jpg' : person.avatar %>"
-              onerror="this.src='assets/replace.jpeg'" alt="avatar">
-            <p class="nickname">
-              <%=person.nickname %>
-            </p>
-          </article>
-          <% }) %>
+              <% const endOfFirstColumn=Math.ceil(persons.length / 3); const endOfSecondColumn=Math.ceil(persons.length
+                * 2/3); const endOfThirdColumn=persons.length; %>
 
-      </div>
+                <!-- column een -->
+                <div class="column column-one">
+                  <% for(var i=0; i < endOfFirstColumn; i++) { %>
+                    <a href="./person/<%= persons[i].id %>">
+                      <article class="profilecard hexagon">
+                        <h2>
+                          <%=persons[i].name %>
+                        </h2>
+                    </a>
 
-      <div class="back-to-top">
-        <button class="scroll-btn" onclick="topFunction()">BACK TO TOP</button>
-      </div>
+                    <!-- <p class="nickname">
+                      <%=persons[i].nickname %>
+                    </p> -->
 
-  </div>
+                    <p class="surname">
+                      <%=persons[i].prefix %>
+                        <%=persons[i].surname %>
+                    </p>
 
-  <div class="messageboard">
+                    <img src="<%= (persons[i].avatar == '') ? 'assets/placeholder.jpg' : persons[i].avatar %>"
+                      onerror="this.src='assets/replace.jpeg'" alt="avatar">
 
-    <!-- <button class="show-msgs"><i class='bx bxs-comment-add'></i></button>  -->
+                    </article>
+                    </a>
+                    <% } %>
+                </div>
 
+                <!-- column twee -->
+                <div class="column column-two">
+                  <% for(var i=endOfFirstColumn; i < endOfSecondColumn; i++) { %>
+                    <a href="./person/<%= persons[i].id %>">
+                      <article class="profilecard hexagon">
+                        <h2>
+                          <%=persons[i].name %>
+                        </h2>
+                    </a>
 
-    <form class="msg-form" method="post" action="/">
-      <h4>leave a comment!</h4>
-      <label for="name">name:
-        <input required type="text" id="name" name="name">
-      </label>
-      <label for="message">
-        message:
-        <textarea required name="message"></textarea>
-      </label>
-      <button type="submit">send</button>
-    </form>
+                    <!-- <p class="nickname">
+                      <%=persons[i].nickname %>
+                    </p> -->
 
-    <div class="message-container">
-      <h2>comments</h2>
-     <div class="message-post">
-        <% for(let count=0; count < messages.length; count++){ %>
-          <section class="message">
-            <h3>
-              <%= names[count] %>:
-            </h3>
-            <p>
-              <%= messages[count] %>
-            </p>
-  
-          </section>
-          <% } %>
-     </div>
-    </div>
-  </div>
+                    <p class="surname">
+                      <%=persons[i].prefix %>
+                        <%=persons[i].surname %>
+                    </p>
 
-  </main>
-  <%- include('./partials/foot') %>
+                    <img src="<%= (persons[i].avatar == '') ? 'assets/placeholder.jpg' : persons[i].avatar %>"
+                      onerror="this.src='assets/replace.jpeg'" alt="avatar">
+                    </article>
+                    </a>
+                    <% } %>
+                </div>
+
+                <!-- column drie -->
+                <div class="column column-three">
+                  <% for(var i=endOfSecondColumn; i < endOfThirdColumn; i++) { %>
+                    <a href="./person/<%= persons[i].id %>">
+                      <article class="profilecard hexagon">
+                        <h2>
+                          <%=persons[i].name %>
+                        </h2>
+                    </a>
+
+                    <!-- <p class="nickname">
+                      <%=persons[i].nickname %>
+                    </p> -->
+
+                    <p class="surname">
+                      <%=persons[i].prefix %>
+                        <%=persons[i].surname %>
+                    </p>
+
+                    <img src="<%= (persons[i].avatar == '') ? 'assets/placeholder.jpg' : persons[i].avatar %>"
+                      onerror="this.src='assets/replace.jpeg'" alt="avatar">
+                    </article>
+                    </a>
+                    <% } %>
+                </div>
+                <button class="scroll-btn" onclick="topFunction()">BACK TO TOP</button>
+
+            </div>
+          </div>
+
+        </main>
+
+        <%- include('./partials/foot') %>
