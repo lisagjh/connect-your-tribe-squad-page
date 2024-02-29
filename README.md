@@ -1,5 +1,6 @@
 # Dynamic Squad Page
 
+![Untitled_Artwork 3](https://github.com/lisagjh/connect-your-tribe-squad-page/assets/131701505/8359ca21-ef9c-422d-9ec3-9aa9a06cfba7)
 
 ### Inhoudsopgave
 
