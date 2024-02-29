@@ -14,7 +14,14 @@ html {
   --grey: #c5c5c5;
   --dark-grey: #5c5c5c;
   --dark: #171717;
-  --blue: #105c78;
+
+  --blue: #1b29c2;
+  --light-blue: #65a5c7;
+  --orange: #f4982e;
+  --soft-orange: #f7b787;
+  --lemon: #faca78;
+  --green: #79c39e;
+  --purple: #818cff;
 
   --space-big: 1.5rem;
   --space-reg: 1rem;
@@ -96,8 +103,12 @@ a:visited {
 
 a:hover {
   text-decoration: underline;
-  color: var(--dark-grey);
+  color: var(--blue);
   font-size: 1.1rem;
+}
+
+a:hover .profilecard {
+  background-color: var(--purple);
 }
 
 /* document */
@@ -135,71 +146,6 @@ header {
   }
 }
 
-/* message box - form */
-
-form {
-  background-color: var(--grey);
-  flex-direction: column;
-  width: 25%;
-  animation: showForm 0.35s ease-in-out;
-  text-transform: capitalize;
-  padding: var(--space-half);
-  border: 1px solid var(--dark-grey);
-  border-radius: 0px 0px 6px 6px;
-
-  label {
-    font-size: smaller;
-  }
-
-  input {
-    width: 100%;
-  }
-
-  textarea {
-    width: 100%;
-  }
-  button {
-    width: 50%;
-    place-self: center;
-  }
-}
-
-.message-container {
-  position: sticky;
-  top: 7.3rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  width: fit-content;
-  padding: var(--space-big);
-  overflow: scroll;
-  z-index: 100;
-}
-
-.message-post {
-  display: flex;
-  flex-direction: row;
-}
-
-.message {
-  width: 8rem;
-  height: 8rem;
-  background-color: var(--grey);
-  border: 1px solid var(--dark-grey);
-  padding: var(--space-small) var(--space-half);
-  border-radius: 4px;
-  margin-right: var(--space-half);
-}
-
-.message h3 {
-  text-transform: uppercase;
-  padding: 0 var(--space-small);
-}
-
-.message p {
-  padding: 0 var(--space-small);
-}
-
 /* cards */
 
 .column-container {
@@ -227,10 +173,11 @@ form {
   justify-content: center;
   height: 14rem;
   width: 14rem;
-  background-color: var(--grey);
+  background-color: var(--lemon);
   clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   margin-bottom: var(--space-half);
   overflow: hidden;
+  transition: background-color 0.2s ease-in-out;
 
   h2 {
     font-size: 1.4rem;
@@ -270,7 +217,7 @@ form {
 }
 
 .scroll-btn {
-  background-color: var(--offwhite);
+  background-color: var(--green);
   display: none;
   position: fixed;
   bottom: 1.5rem;
