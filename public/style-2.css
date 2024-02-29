@@ -154,7 +154,7 @@ header {
   grid-template-columns: 30% 30% 30%;
   width: 100vw;
   max-width: 55rem;
-  margin-top: 10rem;
+  margin-top: 2rem;
 }
 
 .column {
