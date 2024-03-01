@@ -33,7 +33,12 @@ De live website vind je [hier](https://connect-your-tribe-squad-page.onrender.co
   * EJS is een Node Template. Dit gebruikt dus Node om HTML te genereren, waardoor jij een stuk minder hoeft te typen doordat je bijvoorbeeld ook loops kunt gebruiken.
 
 ## Installatie
-Hiervoor heb ik met de terminal in Visual Studio Code een aantal commando's voor gebruikt voor het initialiseren npm init, installeren npm install en testen npm start. 
+1. Installeer [NodeJS](https://nodejs.org/en).
+2. Fork deze repo en open in VScode.
+3. Open de terminal, run de command ```npm install```
+4. run command ```npm start```
+5. Open de link naar de local host
+6. have fun
 
 ## Licentie
 
