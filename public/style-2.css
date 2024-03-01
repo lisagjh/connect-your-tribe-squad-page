@@ -19,7 +19,7 @@ html {
   --light-blue: #65a5c7;
   --orange: #f4982e;
   --soft-orange: #f7b787;
-  --lemon: #faca78;
+  --lemon: #fcd591;
   --green: #79c39e;
   --purple: #818cff;
 
@@ -153,7 +153,7 @@ header {
   justify-content: center;
   grid-template-columns: 30% 30% 30%;
   width: 100vw;
-  max-width: 55rem;
+  max-width: 45rem;
   margin-top: 2rem;
 }
 
@@ -298,6 +298,34 @@ header {
 .show {
   display: block;
 }
+
+/* messages */
+
+.message-box {
+  background-color: var(--offwhite);
+  padding: var(--space-half);
+  margin-bottom: var(--space-small);
+  width: 100vw;
+  border: 1px solid var(--dark-grey);
+  border-radius: 6px;
+  align-self: flex-start;
+
+  li {
+    text-decoration: none;
+    border: 1px solid var(--dark)
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  button {
+    width: 8rem;
+  }
+}
+
 
 /* scroll animation */
 

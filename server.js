@@ -25,6 +25,8 @@ app.use(express.static("public"));
 //zorg dat werken met request data makkelijker wordt
 app.use(express.urlencoded({ extended: true }));
 
+const messages = []
+
 //! 2. Routes die HTTP Requests and Responses afhandelen
 // Maak een GET route voor de index
 app.get("/", function (request, response) {
@@ -33,9 +35,19 @@ app.get("/", function (request, response) {
     response.render("index", {
       persons: apiData.data,
       squads: squadData.data,
+      messages: messages
     });
   });
 });
+
+// Maak een POST route voor de index
+app.post('/', function(request, response) {
+  // Voeg het nieuwe bericht toe aan de messages array
+  messages.push(request.body.bericht)
+
+  // Redirect hierna naar de homepage
+  response.redirect(303, '/')
+})
 
 // Maak een GET route voor een detailpagina met een request parameter id
 app.get("/person/:id", function (request, response) {
@@ -44,17 +56,6 @@ app.get("/person/:id", function (request, response) {
     // Render person.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
     response.render("person", { person: apiData.data, squads: squadData.data });
   });
-});
-
-// message board functionaliteit
-//array messages
-const messages = [];
-const names = [];
-
-app.post("/", function (request, response) {
-  messages.push(request.body.message);
-  names.push(request.body.name);
-  response.redirect(303, "/");
 });
 
 // Maak een GET route voor een detailpagina met een request parameter id
@@ -75,7 +76,6 @@ app.get("/squad/:id", function (request, response) {
       persons: apiData.data,
       squads: squadData.data,
       messages: messages,
-      names: names,
     });
   });
 });

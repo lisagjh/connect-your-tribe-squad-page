@@ -9,6 +9,25 @@
 
     <main>
       <div class="wrapper">
+        <div class="message-box">
+          <h2>Huidige berichten</h2>
+          <ol>
+            <% messages.forEach(message=> { %>
+              <li>
+                <%= message %>
+              </li>
+              <% }) %>
+          </ol>
+
+          <form method="POST" action="/">
+            <label>
+              Berichtje:
+              <textarea required name="bericht"></textarea>
+            </label>
+            <button type="submit">Verstuur bericht</button>
+          </form>
+          </section>
+        </div>
 
         <div class="filters">
           <a href="/" aria-label="Home">Home</a>
@@ -32,19 +51,19 @@
                         <%=persons[i].name %>
                       </h2>
 
-                  <!-- <p class="nickname">
+                      <!-- <p class="nickname">
                       <%=persons[i].nickname %>
                     </p> -->
 
-                  <p class="surname">
-                    <%=persons[i].prefix %>
-                      <%=persons[i].surname %>
-                  </p>
+                      <p class="surname">
+                        <%=persons[i].prefix %>
+                          <%=persons[i].surname %>
+                      </p>
 
-                  <img src="<%= (persons[i].avatar == '') ? 'assets/placeholder.jpg' : persons[i].avatar %>"
-                    onerror="this.src='assets/replace.jpeg'" alt="avatar">
+                      <img src="<%= (persons[i].avatar == '') ? 'assets/placeholder.jpg' : persons[i].avatar %>"
+                        onerror="this.src='assets/replace.jpeg'" alt="avatar">
 
-                  </article>
+                    </article>
                   </a>
                   <% } %>
               </div>
@@ -58,18 +77,18 @@
                         <%=persons[i].name %>
                       </h2>
 
-                  <!-- <p class="nickname">
+                      <!-- <p class="nickname">
                       <%=persons[i].nickname %>
                     </p> -->
 
-                  <p class="surname">
-                    <%=persons[i].prefix %>
-                      <%=persons[i].surname %>
-                  </p>
+                      <p class="surname">
+                        <%=persons[i].prefix %>
+                          <%=persons[i].surname %>
+                      </p>
 
-                  <img src="<%= (persons[i].avatar == '') ? 'assets/placeholder.jpg' : persons[i].avatar %>"
-                    onerror="this.src='assets/replace.jpeg'" alt="avatar">
-                  </article>
+                      <img src="<%= (persons[i].avatar == '') ? 'assets/placeholder.jpg' : persons[i].avatar %>"
+                        onerror="this.src='assets/replace.jpeg'" alt="avatar">
+                    </article>
                   </a>
                   <% } %>
               </div>
@@ -83,18 +102,18 @@
                         <%=persons[i].name %>
                       </h2>
 
-                  <!-- <p class="nickname">
+                      <!-- <p class="nickname">
                       <%=persons[i].nickname %>
                     </p> -->
 
-                  <p class="surname">
-                    <%=persons[i].prefix %>
-                      <%=persons[i].surname %>
-                  </p>
+                      <p class="surname">
+                        <%=persons[i].prefix %>
+                          <%=persons[i].surname %>
+                      </p>
 
-                  <img src="<%= (persons[i].avatar == '') ? 'assets/placeholder.jpg' : persons[i].avatar %>"
-                    onerror="this.src='assets/replace.jpeg'" alt="avatar">
-                  </article>
+                      <img src="<%= (persons[i].avatar == '') ? 'assets/placeholder.jpg' : persons[i].avatar %>"
+                        onerror="this.src='assets/replace.jpeg'" alt="avatar">
+                    </article>
                   </a>
                   <% } %>
               </div>
@@ -103,6 +122,8 @@
           </div>
         </div>
 
+
+      </div>
     </main>
 
     <%- include('./partials/foot') %>
